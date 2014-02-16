@@ -26,5 +26,9 @@ set incsearch			" incremental searching
 set ignorecase			" searches are case insensitive
 set smartcase			" unless they contain at least on capital
 
+"" For Latex-Vim
 set shellslash
 let g:tex_flavor='latex'
+
+"" Remaps
+inoremap jk <ESC>
