@@ -2,7 +2,7 @@ execute pathogen#infect()
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme solarized 
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 
@@ -14,16 +14,16 @@ set number
 
 
 "" Whitespace
-set nowrap			" don't wrap lines
-set tabstop=2 shiftwidth=2	" a tab is 2 spaces
-set expandtab			" use spaces, not tabs
+set nowrap			                " don't wrap lines
+set tabstop=2 shiftwidth=2	    " a tab is 2 spaces
+set expandtab		              	" use spaces, not tabs
 set backspace=indent,eol,start	" backspace through everything in insert mode
 
 
 "" Searching
 set hlsearch			" highlight matches
 set incsearch			" incremental searching
-set ignorecase			" searches are case insensitive
+set ignorecase		" searches are case insensitive
 set smartcase			" unless they contain at least on capital
 
 "" For Latex-Vim
@@ -31,4 +31,6 @@ set shellslash
 let g:tex_flavor='latex'
 
 "" Remaps
+let mapleader=","
 inoremap jk <ESC>
+inoremap <leader>w <ESC>:w<CR>
