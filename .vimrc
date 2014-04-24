@@ -11,6 +11,12 @@ set showcmd
 filetype plugin indent on
 
 set number
+set hidden
+
+"" CODE FOLDING
+set fdm=indent
+set fdc=2
+set fdl=1
 
 
 "" Whitespace
@@ -30,7 +36,19 @@ set smartcase			" unless they contain at least on capital
 set shellslash
 let g:tex_flavor='latex'
 
+
+let g:syntastic_html_checkers = ['w3']
+
 "" Remaps
 let mapleader=","
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
 inoremap jk <ESC>
 inoremap <leader>w <ESC>:w<CR>
+
+
+
+
+set laststatus=2
