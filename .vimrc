@@ -7,11 +7,12 @@ call vundle#begin()
 "let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-vinegar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
@@ -19,11 +20,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'stanangeloff/php.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'raimondi/delimitmate'
@@ -39,11 +41,16 @@ Plugin 'myusuf3/numbers.vim'
 call vundle#end()
 
 set background=dark
-let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme solarized
+
+"let base16colorspace=256
+"colorscheme base16-default-dark
 
 set encoding=utf-8
 set showcmd
+
+filetype plugin indent on " Filetype auto-detection
+syntax on " Syntax highlighting
 
 set relativenumber
 set number
@@ -63,6 +70,8 @@ set incsearch			" incremental searching
 set ignorecase		" searches are case insensitive
 set smartcase			" unless they contain at least on capital
 
+set notagrelative
+
 ""
 " Tags
 ""
@@ -77,12 +86,12 @@ let g:tex_flavor='latex'
 ""
 let g:vimwiki_list = [{ 'path': '~/.vimwiki'}]
 
-"" 
+""
 " VIM-Airline
 ""
 set laststatus=2                " make airline vasible with 1 window
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 "" DelimitMate
 let delimitMate_expand_cr = 1
@@ -116,6 +125,17 @@ let g:syntastic_check_on_wq = 0
 ""
 map <C-o> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"Set default width for NERDTree panel
+let g:NERDTreeWinSize = 40
+
+""
+" Markdown preview
+""
+" let vim_markdown_preview_pandoc=1
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_toggle=2
 
 ""
 " vim-table-mode
@@ -125,13 +145,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "" todo.txt
 map <leader>t :exe "!todo.sh add " . shellescape(input("Enter todo item: "),1) <CR>
 
-"" 
+""
 " Basic Remaps
 ""
 let mapleader=","
 map <leader>s :source ~/.vimrc<CR>
-inoremap jk <ESC>
+
 inoremap <leader>w <ESC>:w<CR>
+
+inoremap jk <ESC>
+
 nnoremap j gj
 nnoremap k gk
 
@@ -150,6 +173,12 @@ nnoremap k gk
 map <C-n> <ESC>:bn<CR>
 map <C-b> <ESC>:bp<CR>
 
+let g:SuperTabDefaultCompletionType = "" 
 
-let g:SuperTabDefaultCompletionType = 'context'
-
+""
+" Code folding options
+""
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
